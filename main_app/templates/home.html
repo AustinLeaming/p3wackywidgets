@@ -19,7 +19,7 @@
         {% for i in todo %}
         <tr>
             <td>{{ i.title }}</td>
-            <td>{{ i.description }}</td>
+            <td>{{ i.quantity }}</td>
             <td>
             <form action="{% url 'todo_delete' i.id %}" method="POST">
                 {% csrf_token %}
@@ -27,11 +27,16 @@
             </form>
             </td>
         </tr>
+        <tr>
+            <td>Total:</td>
+            <td>{{ i.quantity }}</td>
+            <td></td>
+        </tr>
         {% endfor %}
     </table>
         
     {% else %}
-        <h1>Nothing to do</h1>
+        <h1>No widgets</h1>
     {% endif %}
         
     <hr>    

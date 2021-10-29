@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'p3wackywidgets.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'p3wackywidgets',
+        'NAME': 'p3',
     }
 }
 
