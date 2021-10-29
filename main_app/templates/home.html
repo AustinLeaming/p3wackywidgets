@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Wacky Widgets</h1>
+    
+    {% if todo.count > 0 %}
+        {% for i in todo %}
+            <hr>
+            <h1>{{ i.title }}</h1>
+            <p>{{ i.description }}</p>
+            <form action="{% url 'todo_delete' i.id %}" method="POST">
+                {% csrf_token %}
+                <input type="submit" value="delete">
+            </form>
+            <hr>
+        {% endfor %}
+    {% else %}
+        <h1>Nothing to do</h1>
+    {% endif %}
+        
+        
+    <form action="{% url 'todos_create' %}" method="POST">
+        {% csrf_token %}
+        <table>
+            {{ todo_form.as_table }}
+        </table>
+        <input type="submit">
+    </form>
+        
+</body>
+</html>
