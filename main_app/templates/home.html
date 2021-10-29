@@ -10,21 +10,32 @@
     <h1>Wacky Widgets</h1>
     
     {% if todo.count > 0 %}
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Amount</th>
+            <th></th>
+        </tr>
         {% for i in todo %}
-            <hr>
-            <h1>{{ i.title }}</h1>
-            <p>{{ i.description }}</p>
+        <tr>
+            <td>{{ i.title }}</td>
+            <td>{{ i.description }}</td>
+            <td>
             <form action="{% url 'todo_delete' i.id %}" method="POST">
                 {% csrf_token %}
-                <input type="submit" value="delete">
+                <input type="submit" value="X">
             </form>
-            <hr>
+            </td>
+        </tr>
         {% endfor %}
+    </table>
+        
     {% else %}
         <h1>Nothing to do</h1>
     {% endif %}
         
-        
+    <hr>    
+
     <form action="{% url 'todos_create' %}" method="POST">
         {% csrf_token %}
         <table>
